@@ -1,4 +1,5 @@
 using Application.Features.Auth.Constants;
+using Application.Features.Categories.Constants;
 using Application.Features.OperationClaims.Constants;
 using Application.Features.UserOperationClaims.Constants;
 using Application.Features.Users.Constants;
@@ -6,6 +7,8 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NArchitecture.Core.Security.Constants;
+using Application.Features.Comments.Constants;
+using Application.Features.Posts.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -97,6 +100,47 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         );
         #endregion
 
+        
+        
+        #region Categories CRUD
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Read },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Write },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Create },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Update },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        #region Comments CRUD
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CommentsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CommentsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CommentsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CommentsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CommentsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CommentsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+
+        #region Posts CRUD
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = PostsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = PostsOperationClaims.Read },
+                new() { Id = ++lastId, Name = PostsOperationClaims.Write },
+                new() { Id = ++lastId, Name = PostsOperationClaims.Create },
+                new() { Id = ++lastId, Name = PostsOperationClaims.Update },
+                new() { Id = ++lastId, Name = PostsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed
